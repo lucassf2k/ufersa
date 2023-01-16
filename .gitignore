@@ -1,4 +1,5 @@
 /**/node_modules
 /**/.vscode
-/**/bin
+/**/bin/
+/**/lib/
 /**/package-lock.json
