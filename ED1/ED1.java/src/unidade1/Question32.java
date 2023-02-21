@@ -124,7 +124,7 @@ public class Question32 {
     System.out.print("Quantas pessoas deseja cadastrar: ");
     int quantidade = scan.nextInt();
 
-    List<Pessoa> pessoas = new ArrayList<Pessoa>(quantidade);
+    List<Object> pessoas = new ArrayList<Object>(quantidade);
 
     for (int i = 0; i < quantidade; i++) {
       Pessoa pessoa = new Pessoa();
@@ -176,9 +176,9 @@ public class Question32 {
     
 
     try {
-      List<Pessoa> outPut = reader(path);
+      List<Object> outPut = reader(path);
 
-      for (Pessoa p : outPut) {
+      for (Pessoa p : (Pessoa)outPut) {
         System.out.println(p.toString());
       } 
     } catch(IOException e) {
@@ -190,7 +190,7 @@ public class Question32 {
     }
   }
 
-  public static void writer(String path, List<Pessoa> list) throws IOException 
+  public static void writer(String path, List<Object> list) throws IOException 
   {
     File file = new File(path);
     file.delete();
@@ -203,10 +203,10 @@ public class Question32 {
   }
 
   @SuppressWarnings("unchecked")
-  public static List<Pessoa> reader(String path) throws IOException, ClassNotFoundException
+  public static List<Object> reader(String path) throws IOException, ClassNotFoundException
   {
     File file = new File(path);
-    List<Pessoa> list = new ArrayList<Pessoa>();
+    List<Object> list = new ArrayList<Object>();
 
     if (file.exists())
     {
