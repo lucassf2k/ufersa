@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="ED1/ED1.java/src"/>
+	<classpathentry kind="src" path="POO/designPatterns/proxy/example-java/src"/>
+	<classpathentry kind="output" path="ED1/bin"/>
+</classpath>
