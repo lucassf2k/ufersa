@@ -21,8 +21,6 @@ class Pessoa implements Serializable {
   private float altura;
 
 
-  
-
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -178,8 +176,9 @@ public class Question32 {
     try {
       List<Object> outPut = reader(path);
 
-      for (Pessoa p : (Pessoa)outPut) {
-        System.out.println(p.toString());
+      for (Object object : outPut) {
+        Pessoa pessoa = (Pessoa) object;
+        System.out.println(pessoa.toString());
       } 
     } catch(IOException e) {
       System.out.println("Erro na leitura: IOException");
