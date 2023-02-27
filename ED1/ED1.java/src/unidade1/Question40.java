@@ -56,27 +56,7 @@ class Crypto {
     try {
       String str = this.file.reader();
       
-      String[] strs = str.split(" ");
-
-      String newLine = "";
-      
-      for (String word : strs) {
-        for (char ch : word.toCharArray()) {
-          char tmp_ch = ch;
-          for (int i = 0; i < ZENIT.length; i++) {
-            if (ch == '\u0000') {
-              continue;
-            }
-            if (ch == ZENIT[i]) {
-              tmp_ch = POLIR[i];
-            } else if (ch == POLIR[i]) {
-              tmp_ch = ZENIT[i];
-            }
-          }
-          newLine += tmp_ch;
-        }
-        newLine += ' ';
-      }
+      String newLine = this.switchLetters(str);
 
       this.file.writer(newLine);
       return newLine;
@@ -90,28 +70,8 @@ class Crypto {
   public String decrypt() {
     try {
       String str = this.file.reader();
-      
-      String[] strs = str.split(" ");
 
-      String newLine = "";
-      
-      for (String word : strs) {
-        for (char ch : word.toCharArray()) {
-          char tmp_ch = ch;
-          for (int i = 0; i < ZENIT.length; i++) {
-            if (ch == '\u0000') {
-              continue;
-            }
-            if (ch == ZENIT[i]) {
-              tmp_ch = POLIR[i];
-            } else if (ch == POLIR[i]) {
-              tmp_ch = ZENIT[i];
-            }
-          }
-          newLine += tmp_ch;
-        }
-        newLine += ' ';
-      }
+      String newLine = this.switchLetters(str);
 
       this.file.writer(newLine);
       return newLine;
@@ -120,6 +80,32 @@ class Crypto {
       e.printStackTrace();
       return "ERRO";
     }
+  }
+
+  private String switchLetters(String str) {
+    String[] strs = str.split(" ");
+
+    String newLine = "";
+    
+    for (String word : strs) {
+      for (char ch : word.toCharArray()) {
+        char tmp_ch = ch;
+        for (int i = 0; i < ZENIT.length; i++) {
+          if (ch == '\u0000') {
+            continue;
+          }
+          if (ch == ZENIT[i]) {
+            tmp_ch = POLIR[i];
+          } else if (ch == POLIR[i]) {
+            tmp_ch = ZENIT[i];
+          }
+        }
+        newLine += tmp_ch;
+      }
+      newLine += ' ';
+    }
+
+    return newLine;
   }
 }
 

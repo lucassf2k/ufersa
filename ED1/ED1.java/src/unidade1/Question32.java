@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 class Pessoa implements Serializable {
-  private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 415L;
   private String cpf;
   private String nome;
   private String sexo;
