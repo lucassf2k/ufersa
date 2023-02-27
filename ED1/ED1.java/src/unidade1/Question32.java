@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 class Pessoa implements Serializable {
-
+  private static final long serialVersionUID = 1L;
   private String cpf;
   private String nome;
   private String sexo;
@@ -212,7 +212,7 @@ public class Question32 {
     {
       ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(file));
 
-      list = (ArrayList<Pessoa>) objInput.readObject();
+      list = (List<Object>) objInput.readObject();
       objInput.close();      
     }
 
