@@ -11,7 +11,7 @@ class NewtonRaphson {
     let x = x0;
 
     for (let i = 0; i < iterator; i++) {
-      let x1 = x - this.#func(x) / this.#derivative(x);
+      let x1 = x - (this.#func(x) / this.#derivative(x));
 
       if (Math.abs(x1 - x) < erro) {
         return x1;

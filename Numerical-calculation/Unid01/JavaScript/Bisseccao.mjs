@@ -1,6 +1,6 @@
 class Bisseccao {
   #func(x) {
-    return x * x * x - x * x + 2;
+    return 200*Math.log(15000/(15000-(2700*x))) - 9.81*x -750
   }
 
   #bisseccao(a, b, erro, iterator) {
@@ -23,6 +23,11 @@ class Bisseccao {
     return x;
   }
 
+  #arredonda(numero, casasDecimais) {
+    const fator = Math.pow(10, casasDecimais);
+    return Math.round(numero * fator) / fator;
+  }
+
   calculate(a, b, erro, iterator) {
     const outPut = this.#bisseccao(a, b, erro, iterator);
     console.log(`Zero da função: ${outPut}`);
@@ -30,4 +35,4 @@ class Bisseccao {
 }
 
 const methodBisseccao = new Bisseccao();
-methodBisseccao.calculate(-2, -1, 0.0000001, 100);
+methodBisseccao.calculate(0, 1, 0.0000001, 100);

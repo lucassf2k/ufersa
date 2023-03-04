@@ -1,7 +1,9 @@
+import java.util.Arrays;
+
 public class DecomposicaoLU {
   public static void main(String[] args) {
     // Definindo a matriz dos coeficientes
-    double[][] A = { { 1, 2, 3 }, { 2, 5, 2 }, { 6, 2, 4 } };
+    double[][] A = { { 4, 3, 2 }, { 2, 1, 3 }, { 1, 3, 1 } };
 
     // Aplicando a decomposição LU
     double[][][] LU = decomporLU(A);
@@ -16,7 +18,7 @@ public class DecomposicaoLU {
     exibirMatriz(U);
 
     // Resolvendo o sistema Ly = b
-    double[] b = { 6, 5, 7 };
+    double[] b = { 960, 510, 610 };
     double[] y = resolverSistema(L, b);
 
     // Resolvendo o sistema Ux = y

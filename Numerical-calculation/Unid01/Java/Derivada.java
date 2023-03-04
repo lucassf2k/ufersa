@@ -1,3 +1,5 @@
+import java.util.function.Function;
+
 public class Derivada {
   public static double derivada(Function<Double, Double> f, double x, double h) {
     // cálculo da derivada usando a fórmula de diferenças finitas

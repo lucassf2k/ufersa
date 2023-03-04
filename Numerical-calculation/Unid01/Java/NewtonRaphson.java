@@ -24,6 +24,11 @@ public class NewtonRaphson {
     return x;
   }
 
+  public static double arredonda(double numero, int casasDecimais) {
+    double fator = Math.pow(10, casasDecimais);
+    return Math.round(numero * fator) / fator;
+  }
+
   public static void main(String[] args) {
     double x0 = -1; // chute inicial
     double erro = 0.0000000001; // erro desejado
