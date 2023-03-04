@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 class Pessoa implements Serializable {
-
+  private static final long serialVersionUID = 415L;
   private String cpf;
   private String nome;
   private String sexo;
@@ -20,8 +20,6 @@ class Pessoa implements Serializable {
   private float peso;
   private float altura;
 
-
-  
 
   @Override
   public int hashCode() {
@@ -178,8 +176,9 @@ public class Question32 {
     try {
       List<Object> outPut = reader(path);
 
-      for (Pessoa p : (Pessoa)outPut) {
-        System.out.println(p.toString());
+      for (Object object : outPut) {
+        Pessoa pessoa = (Pessoa) object;
+        System.out.println(pessoa.toString());
       } 
     } catch(IOException e) {
       System.out.println("Erro na leitura: IOException");
@@ -212,7 +211,7 @@ public class Question32 {
     {
       ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(file));
 
-      list = (ArrayList<Pessoa>) objInput.readObject();
+      list = (List<Object>) objInput.readObject();
       objInput.close();      
     }
 
