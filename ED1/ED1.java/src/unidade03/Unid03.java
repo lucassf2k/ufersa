@@ -35,15 +35,17 @@ public class Unid03 {
 
   public static void main(String[] args) {
     int[] vet = { 8, 5, 9, 2, 4, 6 };
+    int[] alreadySorted = { 1, 2, 4, 5, 7, 9 };
 
-    for (int element : vet) {
+    for (int element : alreadySorted) {
       System.out.print(element + " ");
     }
 
     System.out.println();
 
-    insertSort(vet);
-    for (int element : vet) {
+    bubbleSort(alreadySorted);
+    // insertSort(alreadySorted);
+    for (int element : alreadySorted) {
       System.out.print(element + " ");
     }
   }
