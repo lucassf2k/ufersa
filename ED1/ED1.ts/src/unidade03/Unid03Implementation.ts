@@ -59,7 +59,7 @@ export class Unid03Implementation {
       minor = i;
 
       // Varre subsequencia em busca do menor numero
-      for (let j = i + 1; j < minor; j++) {
+      for (let j = i + 1; j < size; j++) {
         if (vet[j] < vet[minor]) {
           minor = j;
         }
@@ -122,7 +122,7 @@ export class Unid03Implementation {
 
     i = initialVet;
     j = endVet;
-    pivot = vet[(initialVet + endVet) / 2];
+    pivot = vet[Math.trunc((initialVet + endVet) / 2)];
 
     while (i < j) {
       while (vet[i] < pivot) {
@@ -169,14 +169,14 @@ export class Unid03Implementation {
     while (h > 0) {
       for (i = h; i < size; i++) {
         value = vet[i];
-        j = 1;
+        j = i;
         while (j > h - 1 && value <= vet[j - h]) {
           vet[j] = vet[j - h];
           j = j - h;
         }
         vet[j] = value;
       }
-      h = h / 3;
+      h = Math.trunc(h / 3);
     }
   }
 
@@ -235,3 +235,11 @@ export class Unid03Implementation {
   // Pior Caso: O(N)
   static tableHash(): void {}
 }
+
+function main(): void {
+  const vetTest = [5, 1, 8, 6, 2];
+  console.log(vetTest);
+  Unid03Implementation.shellShort(vetTest);
+  console.log(vetTest);
+}
+main();
