@@ -234,12 +234,34 @@ export class Unid03Implementation {
   // Melhor caso: O(1)
   // Pior Caso: O(N)
   static tableHash(): void {}
+
+  static init(): void {
+    let vetTest = [0];
+
+    for (let i = 0; i < 10000; i++) {
+      vetTest.push(Math.random());
+    }
+
+    console.time("Bubble");
+    this.bubbleSort(vetTest);
+    console.timeEnd("Bubble");
+
+    console.time("Select");
+    this.selectSort(vetTest);
+    console.timeEnd("Select");
+
+    console.time("Insert");
+    this.insertSort(vetTest);
+    console.timeEnd("Insert");
+
+    console.time("Quick");
+    this.quickShort(vetTest, 0, vetTest.length - 1);
+    console.timeEnd("Quick");
+
+    console.time("Shell");
+    this.shellShort(vetTest);
+    console.timeEnd("Shell");
+  }
 }
 
-function main(): void {
-  const vetTest = [5, 1, 8, 6, 2];
-  console.log(vetTest);
-  Unid03Implementation.shellShort(vetTest);
-  console.log(vetTest);
-}
-main();
+Unid03Implementation.init();
