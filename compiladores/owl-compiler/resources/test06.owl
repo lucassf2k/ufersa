@@ -1,0 +1,9 @@
+Seafood_Pizza AND 
+hasTopping SOME Shrimp 
+AND hasTopping SOME Calamari 
+AND CountryOfOrigin VALUE Japan
+
+AND PizzaTopping AND
+CheeseTopping THAT
+hasSpiciness SOME Mild
+and hasCountryOfOrigin VALUE Italy
