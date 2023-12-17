@@ -25,7 +25,7 @@ export async function painel({ cin, mooLexerManager }: PainelProtocol.Input) {
         break
       }
       case 3: {
-        mooLexerManager.showTokens()
+        console.log(mooLexerManager.showTokens())
         break
       }
       case 4: {

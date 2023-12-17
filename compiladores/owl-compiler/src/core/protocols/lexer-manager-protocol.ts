@@ -3,7 +3,7 @@ export namespace LexerManager {
   export interface Protocol {
     getQuantityByToken(): { token: string, quantity: number }[]
     getTokens(): Set<string>
-    showTokens(): void
+    showTokens(): InfosType[]
     getBy(input: SearchType): string[]
   }
   export type TokenType = Token | undefined

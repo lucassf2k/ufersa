@@ -28,7 +28,7 @@ export class MooLexertManager implements LexerManager.Protocol {
   getTokens(): Set<string> {
     const tokens = new Set<string>()
     for (const tokenValid of this._tokensValids) {
-      tokens.add(String(tokenValid.token))
+      if (tokenValid.token !== 'WHITESPACE') tokens.add(String(tokenValid.token))
     }
     return tokens
   }
@@ -41,11 +41,11 @@ export class MooLexertManager implements LexerManager.Protocol {
     return output
   }
 
-  showTokens(): void {
-    this._tokensValids.forEach((info) => console.log(`Token: ${info.token}, Lexeme: ${info.lexeme}`))
+  showTokens(): LexerManager.InfosType[] {
+    return this._tokensValids
   }
 
   private _cleanWhitespace(): LexerManager.InfosType[] {
-    return this._lexerLine.filter((info) => info.token !== 'whitespace')
+    return this._lexerLine.filter((info) => info.token !== 'WHITESPACE')
   }
 }
