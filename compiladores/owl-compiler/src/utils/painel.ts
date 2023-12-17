@@ -48,31 +48,31 @@ export async function painel({ cin, mooLexerManager }: PainelProtocol.Input) {
           console.log()
           switch(Number(input)) {
             case 1: {
-              console.log(mooLexerManager.getBy('class'))
+              console.log(mooLexerManager.getBy('CLASS'))
               break
             }
             case 2: {
-              console.log(mooLexerManager.getBy('property'))
+              console.log(mooLexerManager.getBy('PROPERTY'))
               break
             }
             case 3: {
-              console.log(mooLexerManager.getBy('type'))
+              console.log(mooLexerManager.getBy('TYPE'))
               break
             }
             case 4: {
-              console.log(mooLexerManager.getBy('individual'))
+              console.log(mooLexerManager.getBy('INDIVIDUAL'))
               break
             }
             case 5: {
-              console.log(mooLexerManager.getBy('symbol'))
+              console.log(mooLexerManager.getBy('RELOP'))
               break
             }
             case 6: {
-              console.log(mooLexerManager.getBy('cardinality'))
+              console.log(mooLexerManager.getBy('CARDINALITY'))
               break
             }
             case 7: {
-              console.log(mooLexerManager.getBy('reserved'))
+              console.log(mooLexerManager.getBy('RESERVED'))
             }
             case 8: {
               condition2 = false

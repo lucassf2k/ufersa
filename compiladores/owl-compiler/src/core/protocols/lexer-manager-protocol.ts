@@ -10,5 +10,5 @@ export namespace LexerManager {
   export type InfosType = { token: string | undefined, lexeme: string }
   export type MooLexer = Lexer
   export type QuantityTokenOutput = { token: string, quantity: number }
-  export type SearchType = 'class' | 'property' | 'reserved' | 'symbol' | 'individual' | 'type' | 'cardinality'
+  export type SearchType = 'CLASS' | 'PROPERTY' | 'RESERVED' | 'RELOP' | 'INDIVIDUAL' | 'TYPE' | 'CARDINALITY'
 }
