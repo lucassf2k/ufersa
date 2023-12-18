@@ -12,8 +12,7 @@ async function main(): Promise<void> {
     const mooLexerManager = new MooLexertManager(lexer.reset(input))
     painel({ cin, mooLexerManager })
   } catch (err) {
-    if (err instanceof Error) console
-      .log('Aconteceu algum erro! Tente novamente.')
+    console.error(err)
   }
 }
 
