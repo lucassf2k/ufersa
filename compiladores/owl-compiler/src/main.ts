@@ -10,10 +10,10 @@ async function main(): Promise<void> {
     const PATH = `./resources/${filename}`
     const input = getContentFromFile(PATH)
     const mooLexerManager = new MooLexertManager(lexer.reset(input))
-    painel({ cin, mooLexerManager })
+    void painel({ cin, mooLexerManager })
   } catch (err) {
-    console.error(err)
+    if (err instanceof Error) console.log(`${err.name}: ${err.message}`)
   }
 }
 
-main()
+void main()

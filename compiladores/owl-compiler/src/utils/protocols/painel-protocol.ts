@@ -1,8 +1,8 @@
-import { LexerManager } from '../../core/protocols/lexer-manager-protocol'
+import type { LexerManager } from '../../core/protocols/lexer-manager-protocol'
 
 export namespace PainelProtocol {
-  export type Input = {
-    cin(text: string): Promise<unknown>
+  export interface Input {
+    cin: (text: string) => Promise<string>
     mooLexerManager: LexerManager.Protocol
   }
 }

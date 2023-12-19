@@ -1,12 +1,12 @@
-import { LexerManager } from './protocols/lexer-manager-protocol'
+import { type LexerManager } from './protocols/lexer-manager-protocol'
 
 export class MooLexertManager implements LexerManager.Protocol {
-  private _lexerLine: LexerManager.InfosType[] = [] as const
-  private _tokensValids: LexerManager.InfosType[] = [] as const
+  private readonly _lexerLine: LexerManager.InfosType[] = [] as const
+  private readonly _tokensValids: LexerManager.InfosType[] = [] as const
 
-  constructor(lexer: LexerManager.MooLexer) {
+  constructor (lexer: LexerManager.MooLexer) {
     let token: LexerManager.TokenType
-    while (token = lexer.next()) {
+    while ((token = lexer.next()) != null) {
       this._lexerLine.push({ token: token.type, lexeme: token.text })
     }
     this._tokensValids = this._cleanWhitespace()
@@ -14,7 +14,7 @@ export class MooLexertManager implements LexerManager.Protocol {
 
   getQuantityByToken(): LexerManager.QuantityTokenOutput[] {
     const tokens = this.getTokens()
-    let output: { token: string, quantity: number }[] = []
+    const output: Array<{ token: string, quantity: number }> = []
     tokens.forEach((item) => {
       let count = 0
       for (const tokenValid of this._tokensValids) {
@@ -34,7 +34,7 @@ export class MooLexertManager implements LexerManager.Protocol {
   }
 
   getBy(input: LexerManager.SearchType): string[] {
-    let output: string[] = [] as const
+    const output: string[] = [] as const
     for (const tokenExisted of this._tokensValids) {
       if (input === String(tokenExisted.token)) output.push(tokenExisted.lexeme)
     }

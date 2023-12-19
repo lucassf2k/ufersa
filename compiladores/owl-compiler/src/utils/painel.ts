@@ -1,14 +1,14 @@
-import { LexerManager } from '../core/protocols/lexer-manager-protocol'
-import { PainelProtocol } from './protocols/painel-protocol'
+import type { LexerManager } from '../core/protocols/lexer-manager-protocol'
+import type { PainelProtocol } from './protocols/painel-protocol'
 
-export async function painel({ cin, mooLexerManager }: PainelProtocol.Input) {
-
-  const showInfosByToken = (input: LexerManager.SearchType) => {
+export async function painel(
+  { cin, mooLexerManager }: PainelProtocol.Input
+): Promise<void> {
+  const showInfosByToken = (input: LexerManager.SearchType): void => {
     for (const token of mooLexerManager.getBy(input)) {
       console.log(` - ${token}`)
     }
   }
-
   console.log('\n======= Análise léxica =======\n')
   let condition = true
   while (condition) {
@@ -58,7 +58,7 @@ export async function painel({ cin, mooLexerManager }: PainelProtocol.Input) {
             Opção: `
           )
           console.log()
-          switch(Number(input)) {
+          switch (Number(input)) {
             case 1: {
               showInfosByToken('CLASS')
               break
@@ -93,6 +93,7 @@ export async function painel({ cin, mooLexerManager }: PainelProtocol.Input) {
             }
           }
         } while (condition2)
+        break
       }
       default: {
         condition = false
