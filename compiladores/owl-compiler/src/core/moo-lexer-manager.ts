@@ -1,8 +1,8 @@
-import { type LexerManager } from './protocols/lexer-manager-protocol'
+import type { LexerManager } from './protocols/lexer-manager-protocol'
 
 export class MooLexertManager implements LexerManager.Protocol {
-  private readonly _lexerLine: LexerManager.InfosType[] = [] as const
-  private readonly _tokensValids: LexerManager.InfosType[] = [] as const
+  private readonly _lexerLine: LexerManager.InfosType[] = []
+  private readonly _tokensValids: LexerManager.InfosType[] = []
 
   constructor (lexer: LexerManager.MooLexer) {
     let token: LexerManager.TokenType
@@ -12,20 +12,17 @@ export class MooLexertManager implements LexerManager.Protocol {
     this._tokensValids = this._cleanWhitespace()
   }
 
-  getQuantityByToken(): LexerManager.QuantityTokenOutput[] {
-    const tokens = this.getTokens()
-    const output: Array<{ token: string, quantity: number }> = []
-    tokens.forEach((item) => {
-      let count = 0
-      for (const tokenValid of this._tokensValids) {
-        if (String(tokenValid.token) === item) count++
-      }
-      output.push({ token: String(item), quantity: count })
-    })
+  public getQuantityByToken(): Record<string, number> {
+    const output: Record<string, number> = {}
+    for (const tokenValid of this._tokensValids) {
+      const key = String(tokenValid.token)
+      if (output[key] !== undefined) output[key] = output[key] + 1
+      else output[key] = 1
+    }
     return output
   }
 
-  getTokens(): Set<string> {
+  public getTokens(): Set<string> {
     const tokens = new Set<string>()
     for (const tokenValid of this._tokensValids) {
       if (tokenValid.token !== 'WHITESPACE') tokens.add(String(tokenValid.token))
@@ -33,7 +30,7 @@ export class MooLexertManager implements LexerManager.Protocol {
     return tokens
   }
 
-  getBy(input: LexerManager.SearchType): string[] {
+  public getBy(input: LexerManager.SearchType): string[] {
     const output: string[] = [] as const
     for (const tokenExisted of this._tokensValids) {
       if (input === String(tokenExisted.token)) output.push(tokenExisted.lexeme)
@@ -41,7 +38,7 @@ export class MooLexertManager implements LexerManager.Protocol {
     return output
   }
 
-  showTokens(): LexerManager.InfosType[] {
+  public showTokens(): LexerManager.InfosType[] {
     return this._tokensValids
   }
 

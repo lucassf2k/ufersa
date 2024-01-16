@@ -31,9 +31,7 @@ export async function painel(
         break
       }
       case 2: {
-        for (const content of mooLexerManager.getQuantityByToken()) {
-          console.log(` - Token: ${content.token}, Quantidade: ${content.quantity}`)
-        }
+        console.log(mooLexerManager.getQuantityByToken())
         break
       }
       case 3: {
