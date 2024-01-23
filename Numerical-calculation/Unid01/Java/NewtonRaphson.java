@@ -9,20 +9,24 @@ public class NewtonRaphson {
     return 3 * x * x + 2 * x;
   }
 
-  public static double newton(double x0, double erro, int iteracoes) {
+  public static Output newton(double x0, double erro, int iteracoes) {
     // loop que realiza o cálculo da raiz da função
     double x = x0;
+    Integer quantidadeIteracao = 0;
     for (int i = 0; i < iteracoes; i++) {
       // encontrando o próximo valor de x
       double x1 = x - funcao(x) / derivada(x);
+      quantidadeIteracao++;
 
       if (Math.abs(x1 - x) < erro) {
-        return x1;
+        return new Output(x1, quantidadeIteracao);
       }
       x = x1;
     }
-    return x;
+    return new Output(x, quantidadeIteracao);
   }
+
+  private record Output(Double valor, Integer quantidadeIteracao) {}
 
   public static double arredonda(double numero, int casasDecimais) {
     double fator = Math.pow(10, casasDecimais);
@@ -30,12 +34,11 @@ public class NewtonRaphson {
   }
 
   public static void main(String[] args) {
-    double x0 = -1; // chute inicial
-    double erro = 0.0000000001; // erro desejado
-    int iteracoes = 100;
-
-    double x = newton(x0, erro, iteracoes);
-
-    System.out.println("Zero da função: " + x);
+    final double x0 = -1; // chute inicial
+    final double erro = 0.0000000001; // erro desejado
+    final int iteracoes = 100;
+    final var output = newton(x0, erro, iteracoes);
+    System.out.println("Zero da função: " + output.valor);
+    System.out.println("Em " + output.quantidadeIteracao + " iterações");
   }
 }

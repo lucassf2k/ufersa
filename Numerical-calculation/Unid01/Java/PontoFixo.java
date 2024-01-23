@@ -16,30 +16,33 @@ public class PontoFixo {
    * iteracoes Número máximo de iterações.
    * Valor da solução encontrada.
    */
-  public static double pontoFixo(double x0, double erro, int iteracoes) {
+  public static Output pontoFixo(double x0, double erro, int iteracoes) {
     double x = x0;
     // loop que realiza o cálculo da solução
+    Integer quantitidadeIteracao = 0;
     for (int i = 0; i < iteracoes; i++) {
       // calculando o novo x
       double xNovo = g(x);
+      quantitidadeIteracao++;
       // verificando se o erro é suficientemente pequeno
       if (Math.abs(xNovo - x) < erro) {
-        return xNovo;
+        return new Output(xNovo, quantitidadeIteracao);
       }
       // atualizando o valor de x
       x = xNovo;
     }
     // retorna o último valor de x calculado
-    return x;
+    return new Output(x, quantitidadeIteracao);
   }
 
+  private record Output(Double valor, Integer quantidadeIteracao) {}
+
   public static void main(String[] args) {
-    double x0 = -1; // ponto inicial
-    double erro = 0.0000000001; // erro desejado
-    int iteracoes = 100; // número máximo de iterações
-
-    double x = pontoFixo(x0, erro, iteracoes);
-
-    System.out.println("Zero da função: " + x);
+    final double x0 = -1; // ponto inicial
+    final double erro = 0.0000000001; // erro desejado
+    final int iteracoes = 100; // número máximo de iterações
+    final var output = pontoFixo(x0, erro, iteracoes);
+    System.out.println("Zero da função: " + output.valor);
+    System.out.println("Em " + output.quantidadeIteracao + " iterações");
   }
 }
