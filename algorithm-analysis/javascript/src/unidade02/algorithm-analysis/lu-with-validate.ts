@@ -1,4 +1,4 @@
-import { TMatrix } from './types'
+import { TMatrix } from '../types'
 
 export function LUWithValidate(matrix: TMatrix): {
   L: TMatrix

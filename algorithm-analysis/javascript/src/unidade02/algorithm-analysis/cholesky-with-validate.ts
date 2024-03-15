@@ -1,4 +1,4 @@
-import { TMatrix } from './types'
+import { TMatrix } from '../types'
 
 export function choleskyWithValidate(matrix: TMatrix): {
   L: TMatrix

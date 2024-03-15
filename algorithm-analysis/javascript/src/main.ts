@@ -1,12 +1,6 @@
-import { LU } from './unidade02/lu'
-import { doolittleLU } from './unidade02/do-little'
-import { Gauss } from './unidade02/gauss'
-import { TMatrix } from './unidade02/types'
 import { solveLowerTriangular, solveUpperTriangular } from './unidade02/solve'
-import { cholesky } from './unidade02/cholesky'
-import { choleskyWithValidate } from './unidade02/cholesky-with-validate'
-import { LUWithValidate } from './unidade02/lu-with-validate'
-import { gauss, gaussWithValidate } from './unidade02/matrix'
+import { gauss } from './unidade02/matrix'
+import { doolittleLU } from './unidade02/do-little'
 
 function main(): void {
   // const matrix: TMatrix = [
@@ -20,19 +14,14 @@ function main(): void {
   //   [5.0, -3, 1.0, 14.0, 6, 7, 7, 6, 4, 7],
   //   [5.0, -3, 1.0, 14.0, 6, 3, 1, 3, 3, 5],
   // ]
-  const matrix: TMatrix = [
-    [1, 2],
-    [-1, 4],
+  const matrix = [
+    [4, 2, 1],
+    [3, 1, 3],
+    [2, 3, 1],
   ]
-  const { L, U, errors } = LUWithValidate(matrix)
-  if (errors.length > 0) {
-    errors.forEach((value) => console.log(value))
-    return
-  }
-  console.log('Matrix L: ')
-  console.table(L)
-  console.log('Matrix U: ')
-  console.table(U)
+  const s = gauss(matrix)
+  const solve = solveUpperTriangular(s, [2080, 2080, 2080])
+  console.log(solve)
 }
 
 main()

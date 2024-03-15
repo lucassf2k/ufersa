@@ -56,8 +56,8 @@ export function gauss(matrix: Matrix): Matrix {
   return matrix
 }
 
-export function gaussWithValidate(matrix: TMatrix): {
-  matrix: TMatrix
+export function gaussWithValidate(matrix: Matrix): {
+  matrix: Matrix
   error: string
 } {
   const lineNumbers = matrix.length
