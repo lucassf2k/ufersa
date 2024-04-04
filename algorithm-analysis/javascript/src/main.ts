@@ -1,6 +1,11 @@
 import { solveLowerTriangular, solveUpperTriangular } from './unidade02/solve'
 import { gauss } from './unidade02/matrix'
 import { doolittleLU } from './unidade02/do-little'
+import { gaussWithValidate } from './unidade02/algorithm-analysis/gauss-with-validate'
+import { cholesky } from './unidade02/cholesky'
+import { choleskyWithValidate } from './unidade02/algorithm-analysis/cholesky-with-validate'
+import { LUWithValidate } from './unidade02/algorithm-analysis/lu-with-validate'
+import { MATRIZ_30_X_30 } from './unidade02/algorithm-analysis/data-matriz'
 
 function main(): void {
   // const matrix: TMatrix = [
@@ -19,9 +24,11 @@ function main(): void {
     [3, 1, 3],
     [2, 3, 1],
   ]
-  const s = gauss(matrix)
-  const solve = solveUpperTriangular(s, [2080, 2080, 2080])
-  console.log(solve)
+  console.time()
+  const { error } = gaussWithValidate(MATRIZ_30_X_30)
+  // const solve = solveUpperTriangular(s, [8, 5, 4])
+  console.timeEnd()
+  // console.log(solve)
 }
 
 main()
