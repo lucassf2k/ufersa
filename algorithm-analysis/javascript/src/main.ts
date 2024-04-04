@@ -5,7 +5,11 @@ import { gaussWithValidate } from './unidade02/algorithm-analysis/gauss-with-val
 import { cholesky } from './unidade02/cholesky'
 import { choleskyWithValidate } from './unidade02/algorithm-analysis/cholesky-with-validate'
 import { LUWithValidate } from './unidade02/algorithm-analysis/lu-with-validate'
-import { MATRIZ_30_X_30 } from './unidade02/algorithm-analysis/data-matriz'
+import {
+  MATRIX_10_X_10,
+  MATRIX_50_x_50,
+  MATRIZ_30_X_30,
+} from './unidade02/algorithm-analysis/data-matriz'
 
 function main(): void {
   // const matrix: TMatrix = [
@@ -25,7 +29,7 @@ function main(): void {
     [2, 3, 1],
   ]
   console.time()
-  const { error } = gaussWithValidate(MATRIZ_30_X_30)
+  const { error } = gaussWithValidate(MATRIX_50_x_50)
   // const solve = solveUpperTriangular(s, [8, 5, 4])
   console.timeEnd()
   // console.log(solve)
