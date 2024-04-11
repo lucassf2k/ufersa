@@ -9,15 +9,6 @@ export function choleskyWithValidate(matrix: TMatrix): {
   const n = matrix.length
   const L = Array.from({ length: n }, () => Array(n).fill(0))
   const LT = Array.from({ length: n }, () => Array(n).fill(0))
-  // Verificar se a matriz é simétrica
-  for (let i = 0; i < n; i++) {
-    for (let j = 0; j < i; j++) {
-      if (matrix[i][j] !== matrix[j][i]) {
-        errors.push('[Error]: Matrix não é simetrica')
-        return { L: [], LT: [], errors }
-      }
-    }
-  }
   // Executar a decomposição de Cholesky
   for (let i = 0; i < n; i++) {
     for (let j = 0; j <= i; j++) {

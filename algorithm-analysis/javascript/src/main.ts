@@ -1,8 +1,3 @@
-import { solveLowerTriangular, solveUpperTriangular } from './unidade02/solve'
-import { gauss } from './unidade02/matrix'
-import { doolittleLU } from './unidade02/do-little'
-import { gaussWithValidate } from './unidade02/algorithm-analysis/gauss-with-validate'
-import { cholesky } from './unidade02/cholesky'
 import { choleskyWithValidate } from './unidade02/algorithm-analysis/cholesky-with-validate'
 import { LUWithValidate } from './unidade02/algorithm-analysis/lu-with-validate'
 import {
@@ -10,27 +5,26 @@ import {
   MATRIX_50_x_50,
   MATRIZ_30_X_30,
 } from './unidade02/algorithm-analysis/data-matriz'
+import { gauss, gaussWithValidate } from './unidade02/matrix'
+import { solveLowerTriangular, solveUpperTriangular } from './unidade02/solve'
 
 function main(): void {
-  // const matrix: TMatrix = [
-  //   [3.0, 2.0, -4.0, 3.0, 7, 4, 4, 5, 4, 8],
-  //   [2.0, 3.0, 3.0, 15.0, 6, 6, 5, 1, 4, 7],
-  //   [5.0, -3, 1.0, 14.0, 8, 4, 8, 0, 1, 6],
-  //   [5.0, -3, 1.0, 14.0, 6, 7, 7, 6, 7, 2],
-  //   [5.0, -3, 1.0, 14.0, 6, 3, 4, 5, 7, 9],
-  //   [5.0, -3, 1.0, 14.0, 6, 7, 7, 6, 2, 6],
-  //   [5.0, -3, 1.0, 14.0, 6, 3, 1, 3, 3, 4],
-  //   [5.0, -3, 1.0, 14.0, 6, 7, 7, 6, 4, 7],
-  //   [5.0, -3, 1.0, 14.0, 6, 3, 1, 3, 3, 5],
-  // ]
-  const matrix = [
-    [4, 2, 1],
-    [3, 1, 3],
-    [2, 3, 1],
-  ]
   console.time()
-  const { error } = gaussWithValidate(MATRIX_50_x_50)
-  // const solve = solveUpperTriangular(s, [8, 5, 4])
+  const { L, errors } = choleskyWithValidate(MATRIZ_30_X_30)
+  if (errors.length > 0) {
+    console.log(errors)
+    return
+  }
+  console.log(L)
+  // const solve = solveLowerTriangular(
+  //   matrix,
+  //   [
+  //     72, 32, 65, 88, 55, 9, 51, 78, 30, 14, 64, 100, 72, 57, 97, 81, 83, 80,
+  //     35, 58, 8, 38, 70, 13, 35, 37, 1, 7, 89, 23, 74, 68, 72, 1, 55, 22, 22,
+  //     21, 44, 5, 33, 30, 5, 21, 77, 47, 22, 94, 43, 61,
+  //   ]
+  // )
+  // const solve2 = solveLowerTriangular(L, solve)
   console.timeEnd()
   // console.log(solve)
 }
