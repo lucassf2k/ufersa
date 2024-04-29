@@ -27,13 +27,14 @@ function gaussSeidel(A, b, x0 = null, tol = 1e-6, maxIter = 1000) {
 
 // Exemplo de uso:
 const A = [
-  [4, -1, 0, 0],
-  [-1, 4, -1, 0],
-  [0, -1, 4, -1],
-  [0, 0, -1, 3],
+  [-1, 0.5, 0, 0],
+  [0.5, -1, 0.5, 0],
+  [0, 0.5, -1, 0.5],
+  [0, 0, 0.5, -1],
 ]
 
-const b = [15, 10, 10, 10]
+const x0 = [0, 0, 0, 0]
+const b = [0, 0, 0, -64]
 
 const { solution, iterations } = gaussSeidel(A, b)
 
